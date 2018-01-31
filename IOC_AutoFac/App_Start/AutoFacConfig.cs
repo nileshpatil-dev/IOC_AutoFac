@@ -17,11 +17,11 @@ namespace IOC_AutoFac
 
             // Register the Web API controllers.
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly()).InstancePerRequest();
-            builder.RegisterType<TestService>().As<ITestService>();
-           // builder.RegisterAssemblyTypes(new Assembly[]{
-           //     Assembly.Load("IOC_AutoFac.Services"),
-           //}).Where(t => !string.IsNullOrWhiteSpace(t.Namespace) && (t.Namespace.EndsWith("Repositories")))
-           //.AsImplementedInterfaces();
+            // builder.RegisterType<TestService>().As<ITestService>();
+            builder.RegisterAssemblyTypes(new Assembly[]{
+                Assembly.Load("IOC_AutoFac.Services"),
+           }).Where(t => !string.IsNullOrWhiteSpace(t.Namespace))
+           .AsImplementedInterfaces();
 
             return builder;
         }

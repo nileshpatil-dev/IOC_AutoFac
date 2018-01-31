@@ -11,12 +11,15 @@ namespace IOC_AutoFac.Controllers
     public class TestController : ApiController
     {
         private ITestService _testService;
-        public TestController(ITestService testService)
+        private ITest1 _test1;
+        public TestController(ITestService testService, ITest1 test1)
         {
             _testService = testService;
+            _test1 = test1;
         }
         public string GetGreetings() {
-            return _testService.GetGreetings();
+            // return _testService.GetGreetings();
+            return _test1.TestMethod();
         }
     }
 }
